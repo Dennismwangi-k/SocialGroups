@@ -1,1 +1,1 @@
-web:gunicorn SocialGroups.wsgi
+web: gunicorn SocialGroups.wsgi
