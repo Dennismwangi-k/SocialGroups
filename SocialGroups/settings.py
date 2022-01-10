@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chat.apps.ChatConfig',
 
-    'rest_framework',
+    # 'rest_framework',
 ]
 
 AUTH_USER_MODEL = 'chat.User'
