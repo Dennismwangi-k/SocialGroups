@@ -155,6 +155,23 @@
 
             <form class="form" action="" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
+              	<div class="msg" style="color: red;">
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <div class="alert">
+                    <strong>{{ error|escape }}</strong>
+
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
               {% for field in form %}
               <div class="form__group form__group">
                 <label for="room_name">{{ field.label }}</label>
@@ -187,21 +204,6 @@
             <div class="auth__action">
               <p>already signed up yet?</p>
               <a href="{% url 'login' %}" class="btn btn--link">Sign In</a>
-               {% if field.errors %}
-                {% for form in field %}
-                {% for error in form.errors %}
-                <div class="alert">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-                {% endfor %}
-                {% endfor %}
-                {% for error in field.non_form_errors %}
-                <div class="alert">
-                    <strong>{{ error|escape }}</strong>
-
-                </div>
-                {% endfor %}
-                {% endif %}
             </div>
           </div>
         </div>
