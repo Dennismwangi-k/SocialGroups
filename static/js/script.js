@@ -67,3 +67,31 @@ if (photoInput)
 // Scroll to Bottom
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
+
+ajax({
+    url:  '/rooms/list',
+    type:  'get',
+    dataType:  'json',
+    success: function  (data) {
+        let rows =  '';
+        data.rooms.forEach(room => {
+        rows += `
+        <tr>
+            <td>${room.topic}</td>
+            <td>${room.update}</td>
+            <td>${room.description}</td>
+            <td>${room.participants}</td>
+            <td>
+                <button class="btn deleteBtn" data-id="${room.id}">Delete</button>
+                <button class="btn updateBtn" data-id="${room.id}">Update</button>
+            </td>
+        </tr>`;
+    });
+    $('[#myTable](https://paper.dropbox.com/?q=%23myTable) > tbody').append(rows);
+    $('.deleteBtn').each((i, elm) => {
+        $(elm).on("click",  (e) => {
+            deleteRoom($(elm))
+        })
+    })
+    }
+});
