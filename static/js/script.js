@@ -68,7 +68,7 @@ if (photoInput)
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
 
-function myrefresh() {
-    window.location.reload();
-}
-setTimeout('myrefresh()', 1000); // Specify one refresh per second
+//function myrefresh() {
+//    window.location.reload();
+//}
+//setTimeout('myrefresh()', 1000); // Specify one refresh per second
