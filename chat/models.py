@@ -50,4 +50,4 @@ class Message(models.Model):
         ordering = ['-created', '-update']
 
     def __str__(self):
-        return self.body[0:5]
+        return self.body[0:50]
