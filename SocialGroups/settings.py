@@ -16,6 +16,11 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+env = environ.Env()
+
+environ.Env.read_env()
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-2$ylsx&bjqo!_bhd#or_twiy3cq(bf3yxg8-f0#9y11cnl$h4f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['socialgroups.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,16 +85,26 @@ WSGI_APPLICATION = 'SocialGroups.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ghedjwyq',
+#         'USER': 'ghedjwyq',
+#         'PASSWORD': 'Tz6ounSdktrYXEP63FTxrtwt5Gc_9Wfo',
+#         'HOST': 'ella.db.elephantsql.com',
+#         'PORT': '5432',
+#     }
+# }
+
+import dj_database_url
+
+db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ghedjwyq',
-        'USER': 'ghedjwyq',
-        'PASSWORD': 'Tz6ounSdktrYXEP63FTxrtwt5Gc_9Wfo',
-        'HOST': 'ella.db.elephantsql.com',
-        'PORT': '5432',
+    'default': dj_database_url.parse(env('DATABASE_URL'))
     }
-}
+
+
+# db_from_env = dj-database-url.config(conn_max_age=600)
 
 
 # Password validation
