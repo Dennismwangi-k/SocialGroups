@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from chat.views import JobsPageView
 
 urlpatterns = [
     path('', views.loginPage, name="login"),
@@ -17,5 +18,5 @@ urlpatterns = [
     path('update_user/', views.updateuser, name="update-user"),
     path('topics/', views.topicsPage, name="topics"),
     path('activity/', views.activityPage, name="activity"),
-
+    path('jobs/', JobsPageView.as_view(), name="jobs"),
 ]

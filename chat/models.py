@@ -51,3 +51,43 @@ class Message(models.Model):
 
     def __str__(self):
         return self.body[0:50]
+
+
+JOBTYPE = [
+    ('Fulltime', 'Fulltime'),
+    ('Parttime', 'Parttime'),
+    ('Contract', 'Contract'),
+    ('Internship', 'Internship'),
+    ('Temporary', 'Temporary'),
+    ('Volunteer', 'Volunteer'),
+    ('Other', 'Other'),
+]
+
+REMOTE_ONSITE = [
+    ('Remote', 'Remote'),
+    ('Onsite', 'Onsite'),
+    ('Hybrid', 'Hybrid'),
+]
+
+
+class Jobs(models.Model):
+    company = models.CharField(max_length=200,default="")
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    job_link = models.URLField(max_length=200,default="")
+    job_type = models.CharField(choices=JOBTYPE,max_length=200,default="")
+    remote_onsite = models.CharField(choices=REMOTE_ONSITE,max_length=200,default="")
+    experience = models.CharField(max_length=200,default="")
+    logo = models.ImageField(null=True, default="avatar.svg")
+    location = models.CharField(max_length=200)
+    salary = models.DecimalField(max_length=200,decimal_places=2, default=0.00, max_digits=10)
+    deadline = models.DateField(default='')
+    created = models.DateTimeField(auto_now_add=True)
+   
+    
+
+    class Meta:
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.title

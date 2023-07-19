@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from django.db.models import Q
-from .models import Room, Topic, Message, User
-from .forms import RoomForm, UserForm, MyUserCreationForm
+from .models import Room, Topic, Message, User, Jobs
+from .forms import RoomForm, UserForm, MyUserCreationForm, JobsForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views import View
 # Create your views here.
 
 
@@ -190,3 +191,18 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render(request, 'activity.html', {'room_messages': room_messages})
+
+
+class JobsPageView(View):
+    def get(self, request):
+        get_jobs = Jobs.objects.all()
+        return render(request, "jobs.html", {'jobs': get_jobs})
+    
+    def post(self, request):
+        form = JobsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            messages.error(request, 'an error occurred during registration')
+        return render(request, "jobs.html", {'form': form})
