@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Room,  User
+from .models import Room,  User, Jobs
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -20,3 +20,10 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['avatar', 'username', 'name', 'email', 'bio']
+
+
+class JobsForm(ModelForm):
+    class Meta:
+        model = Jobs
+        fields = '__all__'
+        exclude = ['user,created']

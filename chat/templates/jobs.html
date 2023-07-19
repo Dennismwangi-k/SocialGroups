@@ -64,6 +64,7 @@
                     </ul> 
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
+                           {% for job in jobs %}
                            <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-sm-12 col-md-4">
@@ -71,112 +72,29 @@
                                     </div>
                                     <div class="col-sm-12 col-md-8">
                                         <div class="text-start ps-4">
-                                            <h5>Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Nairobi, Kenya</span>
+                                            <h5>{{job.title}}</h5>
+                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{job.location}}</span>
                                            
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{job.job_type}} </span>
                                             
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{job.salary}}</span>
                                        
-                                            <span class="text-truncate me-0"><i class="fas fa-quote-alt text-primary me-2"></i><a href="job-detail.html">View Job Description</a></span>
+                                            <span class="text-truncate me-0"><i class="fas fa-quote-alt text-primary me-2"></i><a href="{{job.job_link}}" target="_blank">View Job Description</a></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center" style="margin-left: 5% !important;">
                                         
                                         <div class="buttons-container">
-                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                            <a class="btn btn-primary" href="{{job.job_link}}" target="_blank">Apply Now</a>
                                         </div>
                                         <div class="deadlinedate">
-                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
+                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: {{job.deadline}}</small>
                                         </div>
                                     
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-4">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'images/com-logo-1.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-12 col-md-8">
-                                        <div class="text-start ps-4">
-                                            <h5>Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Nairobi, Kenya</span>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                            
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
-                                          
-                                            <span class="text-truncate me-0"><i class="fas fa-quote-alt text-primary me-2"></i><a href="job-detail.html">View Job Description</a></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center" style="margin-left: 5% !important;">
-                                        
-                                        <div class="buttons-container">
-                                            <a class="btn btn-primary" href="">Apply Now</a>
-                                        </div>
-                                        <div class="deadlinedate">
-                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-4">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'images/com-logo-1.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-12 col-md-8">
-                                        <div class="text-start ps-4">
-                                            <h5>Software Engineer</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Nairobi, Kenya</span>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                            
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
-                                          
-                                            <span class="text-truncate me-0"><i class="fas fa-quote-alt text-primary me-2"></i><a href="job-detail.html">View Job Description</a></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center" style="margin-left: 5% !important;">
-                                        
-                                        <div class="buttons-container">
-                                            <a class="btn btn-primary" href="">Apply Now</a>
-                                        </div>
-                                        <div class="deadlinedate">
-                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                                        </div>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="job-item p-4 mb-4">
-                                <div class="row g-4">
-                                    <div class="col-sm-12 col-md-4">
-                                        <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'images/Cat.png' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-12 col-md-8">
-                                        <div class="text-start ps-4">
-                                            <h5>Marketing Manager</h5>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>Texas, USA</span>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
-                                            <span class="text-truncate me-0"><i class="fas fa-quote-alt text-primary me-2"></i><a href="job-detail.html">View Job Description</a></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center" style="margin-left: 5% !important;">
-                                        
-                                        <div class="buttons-container">
-                                            <a class="btn btn-primary" href="">Apply Now</a>
-                                        </div>
-                                        <div class="deadlinedate">
-                                            <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan, 2045</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                           
+                            {% endfor %}                         
                         </div>
                     </div>
                 </div>
@@ -350,12 +268,10 @@
             display: inline;
         }
     }
-
-    /* Styles for smaller screens (e.g., mobile devices) */
     @media (max-width: 767px) {
         .text-truncate {
             display: block;
-            margin-bottom: 5px; /* Add some space between the spans */
+            margin-bottom: 5px; 
         }
     }
 
