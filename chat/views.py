@@ -190,3 +190,7 @@ def topicsPage(request):
 def activityPage(request):
     room_messages = Message.objects.all()
     return render(request, 'activity.html', {'room_messages': room_messages})
+
+
+def JobsPage(request):
+    return render(request, 'jobs.html')
