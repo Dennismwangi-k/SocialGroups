@@ -81,10 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SocialGroups.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -96,20 +92,20 @@ WSGI_APPLICATION = 'SocialGroups.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 import dj_database_url
 
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES = {
-#     'default': dj_database_url.parse(env('DATABASE_URL'))
-#     }
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+    }
 
 
 # db_from_env = dj-database-url.config(conn_max_age=600)
