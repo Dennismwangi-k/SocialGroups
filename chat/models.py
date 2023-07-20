@@ -1,6 +1,7 @@
 from django.db import models
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
+from django_countries.fields import CountryField
 # Create your models here.
 
 
@@ -68,6 +69,11 @@ REMOTE_ONSITE = [
     ('Onsite', 'Onsite'),
     ('Hybrid', 'Hybrid'),
 ]
+
+
+
+class Country_Location(models.Model):
+    country_of_work = CountryField(blank_label='(select country)',null=True)
 
 
 class Jobs(models.Model):

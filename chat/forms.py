@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Room,  User, Jobs
+from .models import Room,  User, Jobs,Country_Location
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -27,3 +27,8 @@ class JobsForm(ModelForm):
         model = Jobs
         fields = '__all__'
         exclude = ['user,created']
+
+class CountryForm(ModelForm):
+    class Meta:
+        model = Country_Location
+        fields = '__all__'
